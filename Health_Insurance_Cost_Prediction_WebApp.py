@@ -50,8 +50,10 @@ def main():
     #creating a button for Prediction
     if st.button('Predict Health Insurance Cost'):
         price = health_insurance_cost_prediction((age,sex,bmi,children,smoker,region))
+        if price < 0:
+            price = -price
         
-    st.success('The Predicted Price: $' + str(abs(price)))
+    st.success('The Predicted Price: $' + str(price))
 
 
 
