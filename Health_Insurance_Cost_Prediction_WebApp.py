@@ -6,6 +6,27 @@ loaded_model = pickle.load(open("health_insurance_cost_prediction_model.sav",'rb
 
 #creating a function for prediction
 
+    #giving a title
+st.write("""
+            <span style="font-family: Arial, sans-serif; font-size: 33px;">
+            <strong>
+            Health Insurance Cost Prediction Web App    
+            </strong>
+            </span>
+""", unsafe_allow_html=True)
+        # Add a description
+st.write("""
+            <span style="font-family: Arial, sans-serif; font-size: 18px;">
+            <strong>
+            In this project, we applied statistical analysis techniques and machine learning methods to predict health insurance costs.
+            Our goal was to enhance prediction accuracy and provide valuable insights for pricing models. 
+            By experimenting with various regression models, we achieved improved performance. 
+            Let’s dive into accurate predictions for health insurance premiums!
+            </strong>
+            </span>
+""", unsafe_allow_html=True)
+
+
 def health_insurance_cost_prediction(input_data):
 
     #changing the input data to numpy
@@ -21,8 +42,8 @@ def health_insurance_cost_prediction(input_data):
 
 def main():
     
-    #giving a title
-    st.title('Health Insurance Cost Prediction Web App')
+    # #giving a title
+    # st.title('Health Insurance Cost Prediction Web App')
     
     #getting input data from user
     
@@ -50,10 +71,14 @@ def main():
     #creating a button for Prediction
     if st.button('Predict Health Insurance Cost'):
         price = health_insurance_cost_prediction((age,sex,bmi,children,smoker,region))
-        if price < 0:
-            price = -price
         
-    st.success('The Predicted Price: $' + str(price))
+    st.success('The Predicted Price: '+ str(price)+'$')
+
+    st.text("\n") 
+    url = "https://superstore-sales.streamlit.app/"
+    st.write(
+            "Link to project No:4 [Superstore Sales Reporting and Forecasting Dashboard ](%s)" % url
+    )
 
 
 
